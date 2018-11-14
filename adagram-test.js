@@ -3,8 +3,8 @@ const Adagrams = {
     // List letters with frequency
     const letterPool = {
       A:9,B:2,C:2,D:4,E:12,F:2, G:3,H:2,I:9,J:1,K:1,L:4,M:2,N:6,O:8,P:2,Q:1,R:6,S:4,T:6,U:4,V:2,W:2,X:1,Y:2,Z:1
-    };
-
+    }
+    // Create array of all letters
     const letterArray = [];
 
     for(const letter in letterPool) {
@@ -37,13 +37,12 @@ const Adagrams = {
     shuffle(letterArray)
 
     // Create hand of 10 random letters
-    return letterArray.slice(0, 10);
+    const hand = letterArray.slice(0, 10);
+
+
+    console.log(hand);
+    // Implement this method for wave 1
   },
+}
 
-  // usesAvailableLetters() {
-  //
-  // }
-};
-
-// Do not remove this line or your tests will break!
-export default Adagrams;
+console.log(Adagrams.drawLetters());
