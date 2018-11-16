@@ -38,11 +38,46 @@ const Adagrams = {
 
     // Create hand of 10 random letters
     const hand = letterArray.slice(0, 10);
+    return hand;
 
-
-    console.log(hand);
     // Implement this method for wave 1
   },
+
+  usesAvailableLetters(input, lettersInHand) {
+    const word = [...input.toUpperCase()];
+    const letterFreq = {};
+
+    lettersInHand.forEach((letter) => {
+      if (letterFreq[letter]) {
+        letterFreq[letter] += 1;
+      } else {
+        letterFreq[letter] = 1;
+      }
+    });
+
+    for (let letter of word) {
+      console.log(letter);
+      if (letterFreq[letter] == undefined) {
+        console.log("undefined");
+        return false;
+      } else if (letterFreq[letter] > 0) {
+        console.log(`Before: ${letterFreq[letter]}`);
+        letterFreq[letter] -= 1;
+        console.log(`After: ${letterFreq[letter]}`);
+        continue
+      } else {
+        console.log(`Count is: ${letterFreq[letter]}`);
+        return false;
+      }
+    }
+    return true;
+  }
 }
 
-console.log(Adagrams.drawLetters());
+
+let hand = Adagrams.drawLetters();
+console.log(`This is the hand: ${hand}`);
+let word = 'easy'
+console.log(word);
+let result = Adagrams.usesAvailableLetters(word, hand);
+console.log(`This is the result: ${result}`);

@@ -18,14 +18,11 @@ const Adagrams = {
       let currentIndex = array.length;
       let temporaryValue;
       let randomIndex;
-
       // While there remain elements to shuffle...
       while (0 !== currentIndex) {
-
         // Pick a remaining element...
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
-
         // And swap it with the current element.
         temporaryValue = array[currentIndex];
         array[currentIndex] = array[randomIndex];
@@ -34,14 +31,43 @@ const Adagrams = {
       return array;
     }
 
-    shuffle(letterArray)
+    shuffle(letterArray);
 
     // Create hand of 10 random letters
     return letterArray.slice(0, 10);
   },
 
-  // usesAvailableLetters() {
+
+  usesAvailableLetters(input, lettersInHand) {
+    const word = [...input.toUpperCase()];
+    const letterFreq = {};
+
+    lettersInHand.forEach((letter) => {
+      if (letterFreq[letter]) {
+        letterFreq[letter] += 1;
+      } else {
+        letterFreq[letter] = 1;
+      }
+    });
+
+    for (let letter of word) {
+      if (letterFreq[letter] == undefined) {
+        return false;
+      }
+      else if (letterFreq[letter] > 0) {
+        letterFreq[letter] -= 1;
+      } else {
+        return false;
+      }
+    }
+    return true;
+  },
   //
+  // scoreWord(word) {
+  //   wordArray = [...word.toUpperCase]
+  //
+  //
+  //   return score
   // }
 };
 

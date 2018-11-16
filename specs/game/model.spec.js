@@ -1,7 +1,7 @@
 import Model from 'game/model';
 import Adagrams from 'game/adagrams';
 
-describe('Game Model', () => {
+describe.skip('Game Model', () => {
   const config = {
     players: [
       'Player A',
