@@ -62,13 +62,34 @@ const Adagrams = {
     }
     return true;
   },
-  //
-  // scoreWord(word) {
-  //   wordArray = [...word.toUpperCase]
-  //
-  //
-  //   return score
-  // }
+
+  scoreWord(word) {
+    let score = 0;
+    const wordArray = [...word.toUpperCase()];
+
+    if ( wordArray.length > 6 ) {
+      score += 8;
+    }
+
+    wordArray.forEach(letter => {
+      if(['A','E','I','O','U','L','N','R','S','T'].includes(letter)) {
+        score += 1;
+      } else if (['D','G'].includes(letter)){
+        score += 2;
+      } else if (['B','C','M','P'].includes(letter)) {
+        score += 3;
+      } else if (['F','H','V','W','Y'].includes(letter)) {
+        score += 4;
+      } else if (['K'].includes(letter)) {
+        score += 5;
+      } else if (['J','X'].includes(letter)) {
+        score += 8;
+      } else if (['Q','Z'].includes(letter)) {
+        score += 10;
+      }
+    });
+    return score;
+  }
 };
 
 // Do not remove this line or your tests will break!
